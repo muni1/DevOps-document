@@ -1,0 +1,53 @@
+Docker basic command
+======================
+curl -fsSL get.docker.com -o get-docker.sh
+sh get-docker.sh
+
+# boot level start
+systemctl enable docker
+
+Docker cmd
+===============
+docker images
+docker search centos
+docker search ubuntu,centos #(os image find)
+docker pull centos
+docker images
+docker run -it centos
+docker run -itd centos
+docker attach CID(container image ID)
+docker ps
+docker ps -a
+ctrl p q (running instance without intract)
+docker exec -it cid /bin/bash
+
+Docker Hub
+============
+docker login
+username : ----
+password: ----
+sucessfully
+docker logout
+
+docker commit cid
+docker tag cid name
+docker push cid
+
+docker images,container
+========================
+docker ps
+docker stop con1 con2 ........
+docker ps -a
+docker start cid
+docker ps
+docker rm cid
+docker rm -f cid(running)
+docker rm cid cid
+docker ps -aq
+docker rm $(docker ps -aq) # running container with and without running everything delete
+docker images
+=================
+docker rmi centos
+docker images -q
+docker rmi $(docker images -q) # remove all images 
+

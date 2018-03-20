@@ -1,0 +1,32 @@
+NETWORK
+========
+docker network ls
+docker network inspect bridge
+man docker-network-create ----help command
+docker network create --subnet 10.1.0.0/24 --gateway 10.1.0.1 mybridge-1(mybridge-1---network name what given name)
+docker network ls
+docker network rm mybridge-1 # delete bridge name
+docker network create --subnet 10.1.0.0/16 --gateway 10.1.0.1 --ip-range=10.1.3.0/24 --driver=bridge --label=myownnetwork bridge01
+
+
+
+# container inside network checking 
+yum install net-tools
+ifconfig (or) hostname -I
+ 
+# NETWORK issue inside implement 
+==============================
+docker run -it --name centos --net bridge01 centos
+ 
+# ip address particular fixed
+ docker run -it --name 1centos --net bridge01 --ip 10.1.3.25 centos
+ 
+docker link
+============
+docker pull wordpress
+docker pull mysql
+docker run -itd --name wp1 -p 89:90 wordpress
+# browser ip : 89 ping
+iptables -F
+docker run -itd --name -e MYSQL_ROOT_PASSWORD=12345 mysql
+docker run -itd --name db-word --link mydb:mysql -p 78:80 wordpress
